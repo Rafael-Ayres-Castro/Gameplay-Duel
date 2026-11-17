@@ -1,0 +1,30 @@
+# Blueprint do Render: New > Blueprint > selecione este repositório.
+services:
+  - type: web
+    name: desafio-gameplay
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: CHAMPIONSHIP_NAME
+        value: Desafio Gameplay
+      - key: PRIZE
+        value: GTA 6
+      - key: START_DATE
+        value: 2026-11-17
+      - key: END_DATE
+        value: 2027-02-28
+      - key: POINTS_WIN
+        value: "3"
+      - key: POINTS_DRAW
+        value: "1"
